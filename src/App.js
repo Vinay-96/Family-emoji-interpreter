@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 
-var fruitsDictionary = {
+var familyDictionary = {
   "👨‍👩‍👦": "Man, Woman, Boy",
   "👨‍👩‍👧": "Man, Woman, Girl",
   "👨‍👩‍👧‍👦": "Man, Woman, Girl, Boy",
@@ -19,38 +19,38 @@ var fruitsDictionary = {
   "👩‍👩‍👧‍👧": "Woman, Woman, Girl, Girl"
 };
 
-var fruitsAvailable = Object.keys(fruitsDictionary);
+var familyAvailable = Object.keys(familyDictionary);
 export default function App() {
   const [meaning, setMeaning] = useState(" ");
 
-  function fruitsInputHandler(event) {
+  function familyInputHandler(event) {
     var userInput = event.target.value;
-    var meaning = fruitsDictionary[userInput];
+    var meaning = familyDictionary[userInput];
     // if (meaning === undefined) {
     //   meaning = "This may be not available for now";
     // }
     setMeaning(meaning);
   }
 
-  function fruitsClickHandler(fruit) {
-    var meaning = fruitsDictionary[fruit];
+  function familyClickHandler(family) {
+    var meaning = familyDictionary[family];
     setMeaning(meaning);
   }
 
   return (
     <div className="App">
       <h1>Family man</h1>
-      <input onChange={fruitsInputHandler} />
+      <input onChange={familyInputHandler} />
       <h2> {meaning} </h2>
-      <h2>Fruits which are available easily</h2>
-      {fruitsAvailable.map(function (fruit) {
+      <h2>family which are available easily</h2>
+      {familyAvailable.map(function (family) {
         return (
           <span
-            onClick={() => fruitsClickHandler(fruit)}
+            onClick={() => familyClickHandler(family)}
             style={{ fontSize: "2rem", padding: "1rem", cursor: "pointer" }}
-            key={fruit}
+            key={family}
           >
-            {fruit}
+            {family}
           </span>
         );
       })}
